@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cunovqoe53aef"]
+
+[ext_resource type="PackedScene" uid="uid://4kw0amsb8vy4" path="res://menu_screens/menu_screen_base.tscn" id="1_umyav"]
+[ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="2_1flka"]
+[ext_resource type="Script" path="res://menu_screens/credits/credits.gd" id="2_bmlbg"]
+
+[node name="Credits" instance=ExtResource("1_umyav")]
+script = ExtResource("2_bmlbg")
+
+[node name="ToDo" type="Label" parent="OuterMargin" index="0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "ToDo:
+Credits"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="OuterMargin" index="1"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Back"
+script = ExtResource("2_1flka")
+
+[connection signal="pressed" from="OuterMargin/Back" to="." method="_on_back_pressed"]

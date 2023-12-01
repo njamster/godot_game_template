@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b454k4ch5e6pv"]
+
+[ext_resource type="PackedScene" uid="uid://4kw0amsb8vy4" path="res://menu_screens/menu_screen_base.tscn" id="1_oq1tl"]
+[ext_resource type="Texture2D" uid="uid://syju1vkgmulg" path="res://menu_screens/splash_screen/images/godot_logo.svg" id="2_2sqxq"]
+[ext_resource type="Script" path="res://menu_screens/splash_screen/splash_screen.gd" id="2_yjrlb"]
+
+[node name="SplashScreen" instance=ExtResource("1_oq1tl")]
+script = ExtResource("2_yjrlb")
+
+[node name="GodotLogo" type="TextureRect" parent="OuterMargin" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_2sqxq")
