@@ -21,13 +21,23 @@ func grab_focus_silently() -> void:
 
 
 func _on_gui_input(event: InputEvent) -> void:
-	if (event.is_action_pressed("ui_up") and find_valid_focus_neighbor(SIDE_TOP)) \
-	or (event.is_action_pressed("ui_right") and find_valid_focus_neighbor(SIDE_RIGHT)) \
-	or (event.is_action_pressed("ui_down") and find_valid_focus_neighbor(SIDE_BOTTOM)) \
-	or (event.is_action_pressed("ui_left") and find_valid_focus_neighbor(SIDE_LEFT)) \
-	or event.is_action_pressed("ui_focus_next", false, true) \
-	or event.is_action_pressed("ui_focus_prev"):
-		_play_focus_sound()
+	var focus_neighbor : Control
+
+	if event.is_action_pressed("ui_up", true, true):
+		focus_neighbor = find_valid_focus_neighbor(SIDE_TOP)
+	elif event.is_action_pressed("ui_right", true, true):
+		focus_neighbor = find_valid_focus_neighbor(SIDE_RIGHT)
+	elif event.is_action_pressed("ui_down", true, true):
+		focus_neighbor = find_valid_focus_neighbor(SIDE_BOTTOM)
+	elif event.is_action_pressed("ui_left", true, true):
+		focus_neighbor = find_valid_focus_neighbor(SIDE_LEFT)
+	elif event.is_action_pressed("ui_focus_next", true, true):
+		focus_neighbor = find_next_valid_focus()
+	elif event.is_action_pressed("ui_focus_prev", true, true):
+		focus_neighbor = find_prev_valid_focus()
+
+	if focus_neighbor and focus_neighbor is ResponsiveButton:
+		focus_neighbor._play_focus_sound()
 
 
 func _play_focus_sound() -> void:
