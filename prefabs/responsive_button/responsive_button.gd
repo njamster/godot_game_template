@@ -3,8 +3,9 @@ extends Button
 
 
 @export var focus_sound : AudioStream
+@export var press_sound : AudioStream
 
-var allow_focus_sound := true
+var focus_sound_disabled := false
 
 
 func _ready() -> void:
@@ -13,11 +14,13 @@ func _ready() -> void:
 	connect("mouse_entered", _play_focus_sound)
 	connect("gui_input", _on_gui_input)
 
+	connect("pressed", _play_press_sound)
+
 
 func grab_focus_silently() -> void:
-	allow_focus_sound = false
+	focus_sound_disabled = true
 	grab_focus()
-	allow_focus_sound = true
+	focus_sound_disabled = false
 
 
 func _on_gui_input(event: InputEvent) -> void:
@@ -41,10 +44,17 @@ func _on_gui_input(event: InputEvent) -> void:
 
 
 func _play_focus_sound() -> void:
-	if not allow_focus_sound:
+	if focus_sound_disabled:
 		return
 
 	if focus_sound:
 		SoundManager.play_ui_sound(focus_sound.resource_path)
 	else:
-		SoundManager.play_ui_sound("res://prefabs/responsive_button/sounds/mouse_over.ogg")
+		SoundManager.play_ui_sound("res://prefabs/responsive_button/sounds/focus.ogg")
+
+
+func _play_press_sound() -> void:
+	if press_sound:
+		SoundManager.play_ui_sound(press_sound.resource_path)
+	else:
+		SoundManager.play_ui_sound("res://prefabs/responsive_button/sounds/press.ogg")
