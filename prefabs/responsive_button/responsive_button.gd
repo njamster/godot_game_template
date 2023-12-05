@@ -44,7 +44,7 @@ func _on_gui_input(event: InputEvent) -> void:
 
 
 func _play_focus_sound() -> void:
-	if focus_sound_disabled:
+	if focus_sound_disabled or disabled:
 		return
 
 	if focus_sound:
