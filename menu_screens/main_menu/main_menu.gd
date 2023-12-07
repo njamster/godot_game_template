@@ -20,3 +20,6 @@ func _on_credits_pressed() -> void:
 func _on_quit_pressed() -> void:
 	SceneSwitcher.quit_game()
 
+
+func _on_author_1_pressed() -> void:
+	Global.open_url("https://mastodon.gamedev.place/@njamster")

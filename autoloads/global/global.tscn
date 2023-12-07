@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuuv0dvin5obo"]
+
+[ext_resource type="Script" path="res://autoloads/global/global.gd" id="1_b2h47"]
+
+[node name="Global" type="CanvasLayer"]
+layer = 127
+script = ExtResource("1_b2h47")
+
+[node name="Notifications" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+theme_override_constants/separation = 12

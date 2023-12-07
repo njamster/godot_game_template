@@ -24,11 +24,11 @@ uppercase = true
 layout_mode = 2
 alignment = 1
 
-[node name="GameBy" type="Label" parent="OuterMargin/Header/Author" index="0"]
+[node name="MadeBy" type="Label" parent="OuterMargin/Header/Author" index="0"]
 layout_mode = 2
-text = "A game by"
+text = "by"
 
-[node name="Author" type="Button" parent="OuterMargin/Header/Author" index="1"]
+[node name="Author1" type="Button" parent="OuterMargin/Header/Author" index="1"]
 layout_mode = 2
 focus_mode = 0
 theme_type_variation = &"FlatButton"
@@ -63,6 +63,7 @@ layout_mode = 2
 text = "Quit"
 script = ExtResource("2_strbq")
 
+[connection signal="pressed" from="OuterMargin/Header/Author/Author1" to="." method="_on_author_1_pressed"]
 [connection signal="pressed" from="OuterMargin/Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="OuterMargin/Buttons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="OuterMargin/Buttons/Credits" to="." method="_on_credits_pressed"]

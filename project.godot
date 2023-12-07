@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://autoloads/global.gd"
+Global="*res://autoloads/global/global.tscn"
 SceneSwitcher="*res://autoloads/scene_switcher/scene_switcher.tscn"
 SoundManager="*res://autoloads/sound_manager.gd"
 
