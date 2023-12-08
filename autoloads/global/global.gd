@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 
-const NOTIFICATION_SCENE := preload("res://autoloads/global/notification/notification.tscn")
+const POPUP_SCENE := preload("res://autoloads/global/popup/popup.tscn")
 
 
 enum CanvasLayers {
@@ -18,7 +18,7 @@ func _ready() -> void:
 func open_url(url: String) -> void:
 	OS.shell_open(url)
 
-	var notification := NOTIFICATION_SCENE.instantiate()
-	$Notifications.add_child(notification)
+	var popup := POPUP_SCENE.instantiate()
+	$Notifications.add_child(popup)
 
-	notification.text = "URL opened, check your browser!"
+	popup.text = "URL opened, check your browser!"
