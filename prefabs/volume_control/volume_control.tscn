@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwof2k8esia3u"]
+[gd_scene load_steps=5 format=3 uid="uid://cwof2k8esia3u"]
 
 [ext_resource type="Script" path="res://prefabs/volume_control/volume_control.gd" id="1_uyuye"]
 [ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="1_wyomm"]
+[ext_resource type="AudioStream" uid="uid://crhq1lo3as23r" path="res://prefabs/responsive_button/sounds/decrease.ogg" id="3_q8w6g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbr0k"]
 
@@ -16,8 +17,8 @@ layout_mode = 2
 
 [node name="Name" type="Label" parent="VBox"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
-text = "Name"
 horizontal_alignment = 1
 
 [node name="HBox" type="HBoxContainer" parent="VBox"]
@@ -32,6 +33,7 @@ layout_mode = 2
 focus_mode = 0
 text = "–"
 script = ExtResource("1_wyomm")
+press_sound = ExtResource("3_q8w6g")
 
 [node name="Volume" type="Label" parent="VBox/HBox"]
 unique_name_in_owner = true
@@ -45,6 +47,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 focus_mode = 0
+disabled = true
 text = "+"
 script = ExtResource("1_wyomm")
 
