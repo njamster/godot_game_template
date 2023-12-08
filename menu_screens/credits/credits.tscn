@@ -1,24 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://cunovqoe53aef"]
+[gd_scene load_steps=6 format=3 uid="uid://cunovqoe53aef"]
 
 [ext_resource type="PackedScene" uid="uid://4kw0amsb8vy4" path="res://menu_screens/menu_screen_base.tscn" id="1_umyav"]
 [ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="2_1flka"]
 [ext_resource type="Script" path="res://menu_screens/credits/credits.gd" id="2_bmlbg"]
 
+[sub_resource type="Gradient" id="Gradient_67v0b"]
+offsets = PackedFloat32Array(0, 0.08, 0.15, 0.85, 0.92, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6uyfg"]
+gradient = SubResource("Gradient_67v0b")
+fill_to = Vector2(0, 1)
+
 [node name="Credits" instance=ExtResource("1_umyav")]
 script = ExtResource("2_bmlbg")
 
-[node name="ToDo" type="Label" parent="OuterMargin" index="0"]
+[node name="Scrollable" type="ScrollContainer" parent="OuterMargin" index="0"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "ToDo:
-Credits"
-horizontal_alignment = 1
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Credits" type="VBoxContainer" parent="OuterMargin/Scrollable" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 90
 
 [node name="Back" type="Button" parent="OuterMargin" index="1"]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Back"
 script = ExtResource("2_1flka")
 
+[node name="FadeOut" type="TextureRect" parent="." index="1"]
+modulate = Color(0.141176, 0.141176, 0.141176, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_6uyfg")
+
+[node name="Label" type="Label" parent="." index="2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 59.0
+
+[connection signal="gui_input" from="OuterMargin/Scrollable" to="." method="_on_scrollable_gui_input"]
 [connection signal="pressed" from="OuterMargin/Back" to="." method="_on_back_pressed"]
