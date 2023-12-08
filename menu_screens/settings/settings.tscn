@@ -24,20 +24,24 @@ size_flags_vertical = 4
 theme_override_constants/separation = 50
 
 [node name="Master" parent="OuterMargin/Settings/SoundVolume" index="0" instance=ExtResource("3_5v4ye")]
+unique_name_in_owner = true
 layout_mode = 2
 label = "Overall"
 
 [node name="Music" parent="OuterMargin/Settings/SoundVolume" index="1" instance=ExtResource("3_5v4ye")]
+unique_name_in_owner = true
 layout_mode = 2
 label = "Music"
 audio_bus = 1
 
 [node name="Sounds" parent="OuterMargin/Settings/SoundVolume" index="2" instance=ExtResource("3_5v4ye")]
+unique_name_in_owner = true
 layout_mode = 2
 label = "Sound Effects"
 audio_bus = 2
 
 [node name="Interface" parent="OuterMargin/Settings/SoundVolume" index="3" instance=ExtResource("3_5v4ye")]
+unique_name_in_owner = true
 layout_mode = 2
 label = "User Interface"
 audio_bus = 3

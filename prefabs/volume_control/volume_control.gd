@@ -39,7 +39,11 @@ const STEP_SIZE := 10
 
 func _ready() -> void:
 	label = label
-	volume = round(db_to_linear(AudioServer.get_bus_volume_db(audio_bus)) * 100)
+	volume = get_volume()
+
+
+func get_volume() -> int:
+	return round(db_to_linear(AudioServer.get_bus_volume_db(audio_bus)) * 100)
 
 
 func _on_decrease_pressed() -> void:
