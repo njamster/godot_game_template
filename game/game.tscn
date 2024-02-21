@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://buaol7bwawwrm"]
+
+[ext_resource type="Script" path="res://game/game.gd" id="1_mai4w"]
+[ext_resource type="Texture2D" uid="uid://bl030uk4hoynu" path="res://game/images/checkerboard_pattern.png" id="2_ek2tu"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mai4w")
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(0.94902, 0.803922, 0.317647, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ek2tu")
+stretch_mode = 1

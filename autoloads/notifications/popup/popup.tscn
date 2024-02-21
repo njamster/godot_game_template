@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://icpqashcom06"]
+
+[ext_resource type="Script" path="res://autoloads/notifications/popup/popup.gd" id="1_ts444"]
+
+[node name="Popup" type="PanelContainer"]
+script = ExtResource("1_ts444")
+
+[node name="InnerMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Text" type="Label" parent="InnerMargin"]
+layout_mode = 2
+text = "URL opened, check your browser!"

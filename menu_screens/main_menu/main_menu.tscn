@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://cteschlgjvwus"]
+
+[ext_resource type="PackedScene" uid="uid://4kw0amsb8vy4" path="res://menu_screens/menu_screen_base.tscn" id="1_etwl2"]
+[ext_resource type="Script" path="res://menu_screens/main_menu/main_menu.gd" id="2_gkl5f"]
+[ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="2_strbq"]
+[ext_resource type="Script" path="res://menu_screens/main_menu/title.gd" id="3_4fslp"]
+[ext_resource type="Texture2D" uid="uid://dsd78ybbwv8eh" path="res://menu_screens/main_menu/images/play.png" id="5_0wxab"]
+[ext_resource type="Texture2D" uid="uid://5kesmxj74df3" path="res://menu_screens/main_menu/images/settings.png" id="6_ed0wa"]
+[ext_resource type="Texture2D" uid="uid://bj2gl5ho3tudi" path="res://menu_screens/main_menu/images/credits.png" id="7_j0mbf"]
+[ext_resource type="Texture2D" uid="uid://okguek63qg6s" path="res://menu_screens/main_menu/images/quit.png" id="8_bk1op"]
+
+[node name="MainMenu" instance=ExtResource("1_etwl2")]
+script = ExtResource("2_gkl5f")
+
+[node name="Header" type="VBoxContainer" parent="OuterMargin" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="OuterMargin/Header" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"Headline"
+text = "Game Template"
+uppercase = true
+script = ExtResource("3_4fslp")
+
+[node name="Author" type="HBoxContainer" parent="OuterMargin/Header" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="MadeBy" type="Label" parent="OuterMargin/Header/Author" index="0"]
+layout_mode = 2
+text = "by"
+
+[node name="Author1" type="Button" parent="OuterMargin/Header/Author" index="1"]
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "njamster"
+script = ExtResource("2_strbq")
+
+[node name="Buttons" type="VBoxContainer" parent="OuterMargin" index="1"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Play" type="Button" parent="OuterMargin/Buttons" index="0"]
+layout_mode = 2
+text = "Play"
+icon = ExtResource("5_0wxab")
+script = ExtResource("2_strbq")
+
+[node name="Settings" type="Button" parent="OuterMargin/Buttons" index="1"]
+layout_mode = 2
+text = "Settings"
+icon = ExtResource("6_ed0wa")
+script = ExtResource("2_strbq")
+
+[node name="Credits" type="Button" parent="OuterMargin/Buttons" index="2"]
+layout_mode = 2
+text = "Credits"
+icon = ExtResource("7_j0mbf")
+script = ExtResource("2_strbq")
+
+[node name="Quit" type="Button" parent="OuterMargin/Buttons" index="3"]
+layout_mode = 2
+text = "Quit"
+icon = ExtResource("8_bk1op")
+script = ExtResource("2_strbq")
+
+[connection signal="pressed" from="OuterMargin/Header/Author/Author1" to="." method="_on_author_1_pressed"]
+[connection signal="pressed" from="OuterMargin/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="OuterMargin/Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="OuterMargin/Buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="OuterMargin/Buttons/Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwof2k8esia3u"]
+
+[ext_resource type="Script" path="res://prefabs/volume_control/volume_control.gd" id="1_uyuye"]
+[ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="1_wyomm"]
+[ext_resource type="AudioStream" uid="uid://crhq1lo3as23r" path="res://prefabs/responsive_button/sounds/decrease.ogg" id="3_q8w6g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbr0k"]
+
+[node name="VolumeControl" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pbr0k")
+script = ExtResource("1_uyuye")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="VBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Decrease" type="Button" parent="VBox/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+focus_mode = 0
+text = "–"
+script = ExtResource("1_wyomm")
+press_sound = ExtResource("3_q8w6g")
+
+[node name="Volume" type="Label" parent="VBox/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(123, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 1
+
+[node name="Increase" type="Button" parent="VBox/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+focus_mode = 0
+text = "+"
+script = ExtResource("1_wyomm")
+
+[connection signal="pressed" from="VBox/HBox/Decrease" to="." method="_on_decrease_pressed"]
+[connection signal="pressed" from="VBox/HBox/Increase" to="." method="_on_increase_pressed"]
