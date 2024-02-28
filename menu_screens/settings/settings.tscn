@@ -11,6 +11,7 @@ script = ExtResource("2_hyy0o")
 [node name="Settings" type="VBoxContainer" parent="OuterMargin" index="0"]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_constants/separation = 60
 
 [node name="Label" type="Label" parent="OuterMargin/Settings" index="0"]
 layout_mode = 2
