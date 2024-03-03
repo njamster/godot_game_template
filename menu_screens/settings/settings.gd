@@ -2,7 +2,7 @@ extends ColorRect
 
 
 func _ready() -> void:
-	$OuterMargin/Back.grab_focus_silently()
+	$OuterMargin/VBox/Back.grab_focus_silently()
 
 
 func _on_back_pressed() -> void:

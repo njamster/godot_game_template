@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ctk5bddg5s4wp"]
+
+[node name="Gameplay" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="ToDo" type="Label" parent="."]
+layout_mode = 2
+text = "ToDo"
+horizontal_alignment = 1

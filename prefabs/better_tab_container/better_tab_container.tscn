@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs1b41km6kl3c"]
+
+[ext_resource type="Script" path="res://prefabs/better_tab_container/better_tab_container.gd" id="1_kcsmh"]
+
+[node name="BetterTabContainer" type="Container"]
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_kcsmh")
+
+[connection signal="child_order_changed" from="." to="." method="_on_child_order_changed"]
+[connection signal="sort_children" from="." to="." method="_on_sort_children"]

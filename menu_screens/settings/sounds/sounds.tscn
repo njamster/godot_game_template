@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://df0cw02w56fm7"]
+
+[ext_resource type="PackedScene" uid="uid://cwof2k8esia3u" path="res://prefabs/volume_control/volume_control.tscn" id="1_218d6"]
+
+[node name="Sounds" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Master" parent="." instance=ExtResource("1_218d6")]
+unique_name_in_owner = true
+layout_mode = 2
+label = "Overall"
+
+[node name="Music" parent="." instance=ExtResource("1_218d6")]
+unique_name_in_owner = true
+layout_mode = 2
+label = "Music"
+audio_bus = 1
+
+[node name="Sounds" parent="." instance=ExtResource("1_218d6")]
+unique_name_in_owner = true
+layout_mode = 2
+label = "Sound Effects"
+audio_bus = 2
+
+[node name="Interface" parent="." instance=ExtResource("1_218d6")]
+unique_name_in_owner = true
+layout_mode = 2
+label = "User Interface"
+audio_bus = 3
