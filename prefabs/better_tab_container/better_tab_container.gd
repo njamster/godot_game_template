@@ -27,6 +27,18 @@ enum AlignmentMode {
 			if is_inside_tree():
 				_on_sort_children()
 
+@export var tab_bar_alignment := AlignmentMode.BEGIN:
+	set(value):
+		tab_bar_alignment = value
+		if is_inside_tree():
+			match value:
+				AlignmentMode.BEGIN:
+					tab_bar.alignment = BoxContainer.ALIGNMENT_BEGIN
+				AlignmentMode.CENTER:
+					tab_bar.alignment = BoxContainer.ALIGNMENT_CENTER
+				AlignmentMode.END:
+					tab_bar.alignment = BoxContainer.ALIGNMENT_END
+
 @export var tab_bar_separation := 0:
 	set(value):
 		if value < 0:
@@ -37,18 +49,6 @@ enum AlignmentMode {
 				_on_sort_children()
 
 @export_group("Tabs", "tab_")
-@export var tab_alignment := AlignmentMode.BEGIN:
-	set(value):
-		tab_alignment = value
-		if is_inside_tree():
-			match value:
-				AlignmentMode.BEGIN:
-					tab_bar.alignment = BoxContainer.ALIGNMENT_BEGIN
-				AlignmentMode.CENTER:
-					tab_bar.alignment = BoxContainer.ALIGNMENT_CENTER
-				AlignmentMode.END:
-					tab_bar.alignment = BoxContainer.ALIGNMENT_END
-
 @export var tab_separation := 0:
 	set(value):
 		if value < 0:
@@ -69,7 +69,7 @@ func _ready() -> void:
 	tab_bar.top_level = true
 	tab_bar.name = "TabBar"
 
-	tab_alignment = tab_alignment
+	tab_bar_alignment = tab_bar_alignment
 	tab_separation = tab_separation
 
 
@@ -147,23 +147,27 @@ func _on_sort_children() -> void:
 				0, tab_bar.size.y + tab_bar_separation,
 				size.x, size.y - tab_bar.size.y - tab_bar_separation
 			)
+			tab_bar.size.x = size.x
 		TabBarPosition.RIGHT:
 			available_space = Rect2(
 				0, 0,
 				size.x - tab_bar.size.x - tab_bar_separation, size.y
 			)
 			tab_bar.global_position.x = self.global_position.x + self.size.x - tab_bar.size.x
+			tab_bar.size.y = size.y
 		TabBarPosition.BOTTOM:
 			available_space = Rect2(
 				0, 0,
 				size.x, size.y - tab_bar.size.y - tab_bar_separation
 			)
 			tab_bar.global_position.y = self.global_position.y + self.size.y - tab_bar.size.y
+			tab_bar.size.x = size.x
 		TabBarPosition.LEFT:
 			available_space = Rect2(
 				tab_bar.size.x + tab_bar_separation, 0,
 				size.x - tab_bar.size.x - tab_bar_separation, size.y
 			)
+			tab_bar.size.y = size.y
 
 	tab_bar.vertical = (tab_bar_position == TabBarPosition.LEFT or tab_bar_position == TabBarPosition.RIGHT)
 
