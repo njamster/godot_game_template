@@ -28,10 +28,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 80
 
-[node name="GamePaused" type="Label" parent="VBox"]
+[node name="Paused" type="Label" parent="VBox"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_type_variation = &"Headline"
-text = "Game Paused"
+text = "PAUSED"
 uppercase = true
 
 [node name="Buttons" type="VBoxContainer" parent="VBox"]
@@ -39,27 +40,27 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 24
 
-[node name="Resume" type="Button" parent="VBox/Buttons"]
+[node name="Continue" type="Button" parent="VBox/Buttons"]
 layout_mode = 2
-text = "Resume"
+text = "CONTINUE"
 script = ExtResource("2_u6d6y")
 
 [node name="Restart" type="Button" parent="VBox/Buttons"]
 layout_mode = 2
-text = "Restart"
+text = "RESTART"
 script = ExtResource("2_u6d6y")
 
-[node name="Settings" type="Button" parent="VBox/Buttons"]
+[node name="Options" type="Button" parent="VBox/Buttons"]
 layout_mode = 2
-text = "Settings"
+text = "OPTIONS"
 script = ExtResource("2_u6d6y")
 
-[node name="QuitToMenu" type="Button" parent="VBox/Buttons"]
+[node name="MainMenu" type="Button" parent="VBox/Buttons"]
 layout_mode = 2
-text = "Quit to Menu"
+text = "MAIN_MENU"
 script = ExtResource("2_u6d6y")
 
-[connection signal="pressed" from="VBox/Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBox/Buttons/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBox/Buttons/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="VBox/Buttons/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBox/Buttons/QuitToMenu" to="." method="_on_quit_to_menu_pressed"]
+[connection signal="pressed" from="VBox/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBox/Buttons/MainMenu" to="." method="_on_main_menu_pressed"]

@@ -9,15 +9,15 @@ func _on_play_pressed() -> void:
 	SceneSwitcher.change_scene("res://game/game.tscn")
 
 
-func _on_settings_pressed() -> void:
-	SceneSwitcher.change_scene("res://menu_screens/settings/settings.tscn", true)
+func _on_options_pressed() -> void:
+	SceneSwitcher.change_scene("res://menu_screens/options/options.tscn", true)
 
 
 func _on_credits_pressed() -> void:
 	SceneSwitcher.change_scene("res://menu_screens/credits/credits.tscn", true)
 
 
-func _on_quit_pressed() -> void:
+func _on_exit_pressed() -> void:
 	SceneSwitcher.quit_game()
 
 

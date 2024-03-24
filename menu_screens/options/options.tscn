@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://hcpvfflvrlhn"]
+
+[ext_resource type="PackedScene" uid="uid://4kw0amsb8vy4" path="res://menu_screens/menu_screen_base.tscn" id="1_xr35s"]
+[ext_resource type="Script" path="res://menu_screens/options/options.gd" id="2_151yv"]
+[ext_resource type="PackedScene" uid="uid://cs1b41km6kl3c" path="res://prefabs/better_tab_container/better_tab_container.tscn" id="3_5ehfa"]
+[ext_resource type="PackedScene" uid="uid://bpixbys68ivv4" path="res://menu_screens/options/video/video.tscn" id="4_sic2g"]
+[ext_resource type="PackedScene" uid="uid://df0cw02w56fm7" path="res://menu_screens/options/audio/audio.tscn" id="5_w3heh"]
+[ext_resource type="Texture2D" uid="uid://buclaey3o8vh3" path="res://autoloads/input_handler/images/prompts/escape_outline.svg" id="6_b11p0"]
+[ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="7_uf41k"]
+
+[node name="Settings" instance=ExtResource("1_xr35s")]
+script = ExtResource("2_151yv")
+
+[node name="Categories" parent="OuterMargin" index="0" instance=ExtResource("3_5ehfa")]
+layout_mode = 2
+size_flags_vertical = 3
+tab_bar_position = 3
+tab_bar_minimum_size = 240
+tab_bar_opening_pad = 25
+tab_separation = 40
+
+[node name="Video" parent="OuterMargin/Categories" index="1" instance=ExtResource("4_sic2g")]
+layout_mode = 2
+
+[node name="Audio" parent="OuterMargin/Categories" index="2" instance=ExtResource("5_w3heh")]
+visible = false
+layout_mode = 2
+
+[node name="Back" type="Button" parent="OuterMargin" index="1"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+focus_mode = 0
+text = "BACK"
+icon = ExtResource("6_b11p0")
+script = ExtResource("7_uf41k")
+
+[connection signal="pressed" from="OuterMargin/Back" to="." method="_on_back_pressed"]

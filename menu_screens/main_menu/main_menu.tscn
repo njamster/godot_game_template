@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="2_strbq"]
 [ext_resource type="Script" path="res://menu_screens/main_menu/title.gd" id="3_4fslp"]
 [ext_resource type="Texture2D" uid="uid://dsd78ybbwv8eh" path="res://menu_screens/main_menu/images/play.png" id="5_0wxab"]
-[ext_resource type="Texture2D" uid="uid://5kesmxj74df3" path="res://menu_screens/main_menu/images/settings.png" id="6_ed0wa"]
+[ext_resource type="Texture2D" uid="uid://5kesmxj74df3" path="res://menu_screens/main_menu/images/options.png" id="6_ed0wa"]
 [ext_resource type="Texture2D" uid="uid://bj2gl5ho3tudi" path="res://menu_screens/main_menu/images/credits.png" id="7_j0mbf"]
 [ext_resource type="Texture2D" uid="uid://okguek63qg6s" path="res://menu_screens/main_menu/images/quit.png" id="8_bk1op"]
 
@@ -21,7 +21,7 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"Headline"
-text = "Game Template"
+text = "Godot Game Template"
 uppercase = true
 script = ExtResource("3_4fslp")
 
@@ -32,7 +32,7 @@ alignment = 2
 
 [node name="MadeBy" type="Label" parent="OuterMargin/Header/Author" index="0"]
 layout_mode = 2
-text = "by"
+text = "BY"
 
 [node name="Author1" type="Button" parent="OuterMargin/Header/Author" index="1"]
 layout_mode = 2
@@ -52,30 +52,30 @@ alignment = 1
 
 [node name="Play" type="Button" parent="OuterMargin/Buttons" index="0"]
 layout_mode = 2
-text = "Play"
+text = "PLAY"
 icon = ExtResource("5_0wxab")
 script = ExtResource("2_strbq")
 
-[node name="Settings" type="Button" parent="OuterMargin/Buttons" index="1"]
+[node name="Options" type="Button" parent="OuterMargin/Buttons" index="1"]
 layout_mode = 2
-text = "Settings"
+text = "OPTIONS"
 icon = ExtResource("6_ed0wa")
 script = ExtResource("2_strbq")
 
 [node name="Credits" type="Button" parent="OuterMargin/Buttons" index="2"]
 layout_mode = 2
-text = "Credits"
+text = "CREDITS"
 icon = ExtResource("7_j0mbf")
 script = ExtResource("2_strbq")
 
-[node name="Quit" type="Button" parent="OuterMargin/Buttons" index="3"]
+[node name="Exit" type="Button" parent="OuterMargin/Buttons" index="3"]
 layout_mode = 2
-text = "Quit"
+text = "EXIT"
 icon = ExtResource("8_bk1op")
 script = ExtResource("2_strbq")
 
 [connection signal="pressed" from="OuterMargin/Header/Author/Author1" to="." method="_on_author_1_pressed"]
 [connection signal="pressed" from="OuterMargin/Buttons/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="OuterMargin/Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="OuterMargin/Buttons/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="OuterMargin/Buttons/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="OuterMargin/Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="OuterMargin/Buttons/Exit" to="." method="_on_exit_pressed"]

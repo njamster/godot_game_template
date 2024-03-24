@@ -30,7 +30,7 @@ z_index = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-text = "Back"
+text = "BACK"
 script = ExtResource("2_1flka")
 
 [node name="FadeOut" type="TextureRect" parent="." index="1"]

@@ -25,8 +25,27 @@ var v_sync := (DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_ENAB
 
 
 func _ready() -> void:
+	auto_add_translations("res://translations/")
+	# if available, automatically select the system language
+	var system_locale := OS.get_locale_language()
+	if system_locale in  TranslationServer.get_loaded_locales():
+		TranslationServer.set_locale(system_locale)
+	else:
+		TranslationServer.set_locale("en")
+
 	load_from_file()
 
+
+## Searches the given path for files ending in ".translation" and adds them (in alphabetical order)
+## as translations to the TranslationServer. [b]Calling this will clear all existing translations![/b]
+func auto_add_translations(path: String) -> void:
+	TranslationServer.clear()
+
+	var directory := DirAccess.open(path)
+	if directory:
+		for file_name in directory.get_files():
+			if file_name.ends_with(".translation"):
+				TranslationServer.add_translation(load(path + file_name))
 
 func load_from_file() -> void:
 	var settings := ConfigFile.new()

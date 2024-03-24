@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://kgipvutwnlom"]
+
+[ext_resource type="PackedScene" uid="uid://benxpjjjwdfmo" path="res://menu_screens/options/option_types/option_range/option_range.tscn" id="1_35a0t"]
+[ext_resource type="Script" path="res://menu_screens/options/audio/ui_volume/ui_volume.gd" id="2_sqbti"]
+
+[node name="UIVolume" instance=ExtResource("1_35a0t")]
+script = ExtResource("2_sqbti")
+
+[node name="Label" parent="VBox/HBox" index="0"]
+text = "User Interface"
+
+[node name="Hint" parent="VBox" index="2"]
+text = "Affects ONLY the volume of sounds played while interacting with the user interface, e.g. clicking on buttons."
