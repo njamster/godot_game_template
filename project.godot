@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
-run/main_scene.release="res://menu_screens/splash_screen/splash_screen.tscn"
+run/main_scene.release="res://menu_screens/language_selection/language_selection.tscn"
 
 [autoload]
 
