@@ -1,7 +1,27 @@
 extends Node
 
+signal setting_updated()
 
 const FILEPATH := "user://settings.cfg"
+
+var fullscreen := (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN):
+	set(value):
+		fullscreen = value
+		if fullscreen:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		emit_signal("setting_updated")
+
+
+var v_sync := (DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_ENABLED):
+	set(value):
+		v_sync = value
+		if v_sync:
+			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+		else:
+			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+		emit_signal("setting_updated")
 
 
 func _ready() -> void:

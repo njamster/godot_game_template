@@ -29,6 +29,7 @@ SceneSwitcher="*res://autoloads/scene_switcher.gd"
 SoundManager="*res://autoloads/sound_manager.gd"
 InputHandler="*res://autoloads/input_handler/input_handler.tscn"
 Utils="*res://autoloads/utils.gd"
+WorldEnv="*res://autoloads/world_environment.tscn"
 
 [display]
 

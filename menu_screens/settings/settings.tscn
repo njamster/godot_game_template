@@ -3,43 +3,36 @@
 [ext_resource type="PackedScene" uid="uid://4kw0amsb8vy4" path="res://menu_screens/menu_screen_base.tscn" id="1_0wrc5"]
 [ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="2_c3nt7"]
 [ext_resource type="Script" path="res://menu_screens/settings/settings.gd" id="2_hyy0o"]
+[ext_resource type="PackedScene" uid="uid://bpixbys68ivv4" path="res://menu_screens/settings/video/video.tscn" id="4_a2fpf"]
 [ext_resource type="PackedScene" uid="uid://cs1b41km6kl3c" path="res://prefabs/better_tab_container/better_tab_container.tscn" id="4_s04d2"]
-[ext_resource type="PackedScene" uid="uid://ctk5bddg5s4wp" path="res://menu_screens/settings/gameplay/gameplay.tscn" id="4_yoy83"]
-[ext_resource type="PackedScene" uid="uid://df0cw02w56fm7" path="res://menu_screens/settings/sounds/sounds.tscn" id="5_gnf3q"]
-[ext_resource type="PackedScene" uid="uid://dgb16anb4frp1" path="res://menu_screens/settings/controls/controls.tscn" id="6_fn4ih"]
+[ext_resource type="PackedScene" uid="uid://df0cw02w56fm7" path="res://menu_screens/settings/audio/audio.tscn" id="5_7q2d0"]
+[ext_resource type="Texture2D" uid="uid://buclaey3o8vh3" path="res://autoloads/input_handler/images/prompts/escape_outline.svg" id="6_hiwk3"]
 
 [node name="Settings" instance=ExtResource("1_0wrc5")]
 script = ExtResource("2_hyy0o")
 
-[node name="VBox" type="VBoxContainer" parent="OuterMargin" index="0"]
-layout_mode = 2
-
-[node name="Categories" parent="OuterMargin/VBox" index="0" instance=ExtResource("4_s04d2")]
+[node name="Categories" parent="OuterMargin" index="0" instance=ExtResource("4_s04d2")]
 layout_mode = 2
 size_flags_vertical = 3
 tab_bar_position = 3
+tab_bar_minimum_size = 240
+tab_bar_opening_pad = 25
 tab_separation = 40
 
-[node name="Graphics" parent="OuterMargin/VBox/Categories" index="1" instance=ExtResource("4_yoy83")]
+[node name="Video" parent="OuterMargin/Categories" index="1" instance=ExtResource("4_a2fpf")]
 layout_mode = 2
 
-[node name="Sounds" parent="OuterMargin/VBox/Categories" index="2" instance=ExtResource("5_gnf3q")]
+[node name="Audio" parent="OuterMargin/Categories" index="2" instance=ExtResource("5_7q2d0")]
 visible = false
 layout_mode = 2
 
-[node name="Controls" parent="OuterMargin/VBox/Categories" index="3" instance=ExtResource("6_fn4ih")]
-visible = false
-layout_mode = 2
-
-[node name="Gameplay" parent="OuterMargin/VBox/Categories" index="4" instance=ExtResource("4_yoy83")]
-visible = false
-layout_mode = 2
-
-[node name="Back" type="Button" parent="OuterMargin/VBox" index="1"]
+[node name="Back" type="Button" parent="OuterMargin" index="1"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+focus_mode = 0
 text = "Back"
+icon = ExtResource("6_hiwk3")
 script = ExtResource("2_c3nt7")
 
-[connection signal="pressed" from="OuterMargin/VBox/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="OuterMargin/Back" to="." method="_on_back_pressed"]

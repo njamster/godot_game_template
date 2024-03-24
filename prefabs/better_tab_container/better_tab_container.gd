@@ -39,6 +39,14 @@ enum AlignmentMode {
 				AlignmentMode.END:
 					tab_bar.alignment = BoxContainer.ALIGNMENT_END
 
+@export var tab_bar_minimum_size := 0:
+	set(value):
+		if value < 0:
+			return
+		tab_bar_minimum_size = value
+		if is_inside_tree():
+			tab_bar.custom_minimum_size.x = value
+
 @export var tab_bar_separation := 0:
 	set(value):
 		if value < 0:
@@ -48,6 +56,22 @@ enum AlignmentMode {
 			if is_inside_tree():
 				_on_sort_children()
 
+@export var tab_bar_opening_pad := 0:
+	set(value):
+		if value < 0:
+			return
+		tab_bar_opening_pad = value
+		if is_inside_tree():
+			_on_sort_children()
+
+@export var tab_bar_closing_pad := 0:
+	set(value):
+		if value < 0:
+			return
+		tab_bar_closing_pad = value
+		if is_inside_tree():
+			_on_sort_children()
+
 @export_group("Tabs", "tab_")
 @export var tab_separation := 0:
 	set(value):
@@ -56,11 +80,39 @@ enum AlignmentMode {
 		tab_separation = value
 		if is_inside_tree():
 			tab_bar.add_theme_constant_override("separation", value)
+
+@export var tab_text_alignment := AlignmentMode.CENTER:
+	set(value):
+		tab_text_alignment = value
+		if is_inside_tree():
+			for tab in tab_bar.get_children():
+				match value:
+					AlignmentMode.BEGIN:
+						tab.alignment = BoxContainer.ALIGNMENT_BEGIN
+					AlignmentMode.CENTER:
+						tab.alignment = BoxContainer.ALIGNMENT_CENTER
+					AlignmentMode.END:
+						tab.alignment = BoxContainer.ALIGNMENT_END
+
+@export var tab_shrink := false:
+	set(value):
+		tab_shrink = value
+		if is_inside_tree():
+			for tab in tab_bar.get_children():
+				if tab_shrink:
+					if tab_bar_position == TabBarPosition.LEFT:
+						tab.size_flags_horizontal = SIZE_SHRINK_END
+					if tab_bar_position == TabBarPosition.RIGHT:
+						tab.size_flags_horizontal = SIZE_SHRINK_BEGIN
+				else:
+					tab.size_flags_horizontal = SIZE_FILL
 #endregion
 
 var _updating_visibility := false
 
 @onready var tab_bar := BoxContainer.new()
+
+var visible_tab := -1
 
 
 func _ready() -> void:
@@ -70,7 +122,13 @@ func _ready() -> void:
 	tab_bar.name = "TabBar"
 
 	tab_bar_alignment = tab_bar_alignment
+	tab_bar_minimum_size = tab_bar_minimum_size
+	tab_bar_opening_pad = tab_bar_opening_pad
+	tab_bar_closing_pad = tab_bar_closing_pad
+
 	tab_separation = tab_separation
+	tab_text_alignment = tab_text_alignment
+	tab_shrink = tab_shrink
 
 
 func _on_child_order_changed() -> void:
@@ -94,7 +152,8 @@ func _on_child_order_changed() -> void:
 			node.connect("visibility_changed", func():
 				if not _updating_visibility:
 					_updating_visibility = true
-					select_tab(node.get_index())
+					if node.visible:
+						select_tab(node.get_index())
 					_updating_visibility = false
 			)
 			_add_tab(node.name, i)
@@ -121,7 +180,7 @@ func _add_tab(tab_name: String, tab_id: int) -> void:
 	tab_bar.add_child(tab)
 	tab.text = tab_name
 	tab.toggle_mode = true
-	tab.focus_mode = Control.FOCUS_NONE
+	tab.focus_mode = FOCUS_NONE
 	tab.connect("pressed", select_tab.bind(tab_id))
 
 	if not is_restored:
@@ -131,7 +190,12 @@ func _add_tab(tab_name: String, tab_id: int) -> void:
 func select_tab(tab_id: int) -> void:
 	for i in tab_bar.get_child_count():
 		get_child(i).visible = (i == tab_id)
+		if (i == tab_id) and not Engine.is_editor_hint() and get_child(i).has_method("focus_first_option"):
+			get_child(i).focus_first_option()
+		tab_bar.get_child(i).focus_mode = FOCUS_NONE
 		tab_bar.get_child(i).button_pressed = (i == tab_id)
+
+	visible_tab = tab_id
 
 
 func _on_sort_children() -> void:
@@ -147,27 +211,31 @@ func _on_sort_children() -> void:
 				0, tab_bar.size.y + tab_bar_separation,
 				size.x, size.y - tab_bar.size.y - tab_bar_separation
 			)
-			tab_bar.size.x = size.x
+			tab_bar.global_position.x = self.global_position.x + tab_bar_opening_pad
+			tab_bar.size.x = size.x - tab_bar_opening_pad - tab_bar_closing_pad
 		TabBarPosition.RIGHT:
 			available_space = Rect2(
 				0, 0,
 				size.x - tab_bar.size.x - tab_bar_separation, size.y
 			)
 			tab_bar.global_position.x = self.global_position.x + self.size.x - tab_bar.size.x
-			tab_bar.size.y = size.y
+			tab_bar.global_position.y = self.global_position.y + tab_bar_opening_pad
+			tab_bar.size.y = size.y - tab_bar_opening_pad - tab_bar_closing_pad
 		TabBarPosition.BOTTOM:
 			available_space = Rect2(
 				0, 0,
 				size.x, size.y - tab_bar.size.y - tab_bar_separation
 			)
+			tab_bar.global_position.x = self.global_position.x + tab_bar_opening_pad
 			tab_bar.global_position.y = self.global_position.y + self.size.y - tab_bar.size.y
-			tab_bar.size.x = size.x
+			tab_bar.size.x = size.x  - tab_bar_opening_pad - tab_bar_closing_pad
 		TabBarPosition.LEFT:
 			available_space = Rect2(
 				tab_bar.size.x + tab_bar_separation, 0,
 				size.x - tab_bar.size.x - tab_bar_separation, size.y
 			)
-			tab_bar.size.y = size.y
+			tab_bar.global_position.y = self.global_position.y + tab_bar_opening_pad
+			tab_bar.size.y = size.y  - tab_bar_opening_pad - tab_bar_closing_pad
 
 	tab_bar.vertical = (tab_bar_position == TabBarPosition.LEFT or tab_bar_position == TabBarPosition.RIGHT)
 
@@ -195,3 +263,12 @@ func _on_sort_children() -> void:
 				child_node.size_flags_horizontal = Control.SIZE_FILL
 		else:
 			child_node.size_flags_horizontal = Control.SIZE_FILL
+
+
+func focus_tab() -> void:
+	for child in tab_bar.get_children():
+		child.focus_mode = FOCUS_ALL
+	var child_node := tab_bar.get_child(visible_tab)
+	child_node.grab_focus()
+	get_child(visible_tab).hide()
+	visible_tab = -1

@@ -1,7 +1,11 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://ck80lirt6ulm5"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://ck80lirt6ulm5"]
 
 [ext_resource type="FontFile" uid="uid://4a4nnftfwdoc" path="res://themes/fonts/oswald/oswald_bold.ttf" id="1_t2k8r"]
 [ext_resource type="FontFile" uid="uid://mm4tj1y078bs" path="res://themes/fonts/lato/lato_bold.ttf" id="1_t5rug"]
+[ext_resource type="Texture2D" uid="uid://cd7afpm4uaa6i" path="res://themes/images/box_checked.png" id="1_yxu26"]
+[ext_resource type="Texture2D" uid="uid://bxcg60jtnx3sy" path="res://themes/images/box_checked_disabled.png" id="2_2p0av"]
+[ext_resource type="Texture2D" uid="uid://daqa2pdam46bl" path="res://themes/images/box_unchecked.png" id="3_d0mp4"]
+[ext_resource type="Texture2D" uid="uid://cboc3jvi67487" path="res://themes/images/box_unchecked_disabled.png" id="4_le6qr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r55ba"]
 content_margin_left = 18.0
@@ -22,10 +26,10 @@ content_margin_right = 18.0
 content_margin_bottom = 8.0
 bg_color = Color(1, 1, 1, 0.75)
 draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
@@ -96,6 +100,10 @@ Button/styles/focus = SubResource("StyleBoxFlat_tvypm")
 Button/styles/hover = SubResource("StyleBoxFlat_kgk64")
 Button/styles/normal = SubResource("StyleBoxFlat_cmdpc")
 Button/styles/pressed = SubResource("StyleBoxFlat_d2nja")
+CheckBox/icons/checked = ExtResource("1_yxu26")
+CheckBox/icons/checked_disabled = ExtResource("2_2p0av")
+CheckBox/icons/unchecked = ExtResource("3_d0mp4")
+CheckBox/icons/unchecked_disabled = ExtResource("4_le6qr")
 FlatButton/styles/disabled = SubResource("StyleBoxEmpty_mpc3a")
 FlatButton/styles/hover = SubResource("StyleBoxEmpty_223yf")
 FlatButton/styles/normal = SubResource("StyleBoxEmpty_xnu47")

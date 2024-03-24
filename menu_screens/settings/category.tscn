@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfok1now7w0c6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3i42g"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Category" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3i42g")
+
+[node name="Scrollable" type="ScrollContainer" parent="."]
+layout_mode = 2
+
+[node name="Options" type="VBoxContainer" parent="Scrollable"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40

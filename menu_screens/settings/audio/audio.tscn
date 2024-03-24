@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://df0cw02w56fm7"]
+
+[ext_resource type="PackedScene" uid="uid://cfok1now7w0c6" path="res://menu_screens/settings/category.tscn" id="1_gl4jx"]
+[ext_resource type="Script" path="res://menu_screens/settings/audio/audio.gd" id="2_0cvkr"]
+[ext_resource type="PackedScene" uid="uid://b6ysf6noeucn1" path="res://menu_screens/settings/audio/master_volume/master_volume.tscn" id="2_o0vby"]
+[ext_resource type="PackedScene" uid="uid://b8gt0vhrpmdeu" path="res://menu_screens/settings/audio/music_volume/music_volume.tscn" id="4_vpgei"]
+[ext_resource type="PackedScene" uid="uid://dplhri8w6inl3" path="res://menu_screens/settings/audio/sfx_volume/sfx_volume.tscn" id="5_fh6kl"]
+[ext_resource type="PackedScene" uid="uid://kgipvutwnlom" path="res://menu_screens/settings/audio/ui_volume/ui_volume.tscn" id="6_lsn5w"]
+
+[node name="Audio" instance=ExtResource("1_gl4jx")]
+script = ExtResource("2_0cvkr")
+
+[node name="MasterVolume" parent="Scrollable/Options" index="0" instance=ExtResource("2_o0vby")]
+layout_mode = 2
+
+[node name="MusicVolume" parent="Scrollable/Options" index="1" instance=ExtResource("4_vpgei")]
+layout_mode = 2
+
+[node name="SFXVolume" parent="Scrollable/Options" index="2" instance=ExtResource("5_fh6kl")]
+layout_mode = 2
+
+[node name="UIVolume" parent="Scrollable/Options" index="3" instance=ExtResource("6_lsn5w")]
+layout_mode = 2
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

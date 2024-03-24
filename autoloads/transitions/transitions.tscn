@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://clvrmrtxal1yo"]
+[gd_scene load_steps=3 format=3 uid="uid://clvrmrtxal1yo"]
 
 [ext_resource type="Script" path="res://autoloads/transitions/transitions.gd" id="1_ovgsb"]
+[ext_resource type="Script" path="res://autoloads/transitions/FPS.gd" id="2_mnh4x"]
 
 [node name="Transitions" type="CanvasLayer"]
 script = ExtResource("1_ovgsb")
@@ -28,4 +29,18 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Restart Game"
 
+[node name="FPS" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
+offset_bottom = 20.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "FPS"
+script = ExtResource("2_mnh4x")
+
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="visibility_changed" from="FPS" to="FPS" method="_on_visibility_changed"]

@@ -11,6 +11,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_kcsmh")
+tab_bar_minimum_size = null
 
 [connection signal="child_order_changed" from="." to="." method="_on_child_order_changed"]
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="sort_children" from="." to="." method="_on_sort_children"]
