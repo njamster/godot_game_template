@@ -1,11 +1,25 @@
+@tool
 class_name ResponsiveButton
 extends Button
 
 
+@export_group("Sounds")
 @export var focus_sound : AudioStream
 @export var press_sound : AudioStream
 
 var focus_sound_disabled := false
+
+
+@export_group("Input Prompt")
+@export var action_name : String:
+	set(value):
+		action_name = value
+		_update_input_icon()
+
+@export var outline_only := false:
+	set(value):
+		outline_only = value
+		_update_input_icon()
 
 
 func _ready() -> void:
@@ -15,6 +29,15 @@ func _ready() -> void:
 	connect("gui_input", _on_gui_input)
 
 	connect("pressed", _play_press_sound)
+
+	InputHandler.connect("mode_changed", _update_input_icon)
+
+
+func _update_input_icon() -> void:
+	if self.action_name == "":
+		return
+
+	icon = InputHandler.get_icon(self.action_name, self.outline_only)
 
 
 func grab_focus_silently() -> void:

@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept", false, true):
-		_on_confirm_pressed()
+		$OuterMargin/VBox/Confirm.emit_signal("pressed")
 
 
 func _on_confirm_pressed() -> void:

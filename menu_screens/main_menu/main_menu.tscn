@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cteschlgjvwus"]
+[gd_scene load_steps=11 format=3 uid="uid://cteschlgjvwus"]
 
 [ext_resource type="PackedScene" uid="uid://4kw0amsb8vy4" path="res://menu_screens/menu_screen_base.tscn" id="1_etwl2"]
 [ext_resource type="Script" path="res://menu_screens/main_menu/main_menu.gd" id="2_gkl5f"]
@@ -8,6 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://5kesmxj74df3" path="res://menu_screens/main_menu/images/options.png" id="6_ed0wa"]
 [ext_resource type="Texture2D" uid="uid://bj2gl5ho3tudi" path="res://menu_screens/main_menu/images/credits.png" id="7_j0mbf"]
 [ext_resource type="Texture2D" uid="uid://okguek63qg6s" path="res://menu_screens/main_menu/images/quit.png" id="8_bk1op"]
+[ext_resource type="Script" path="res://prefabs/input_hints/input_hints.gd" id="9_d4na5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp73t"]
+content_margin_left = 25.0
+content_margin_top = 10.0
+content_margin_right = 25.0
+content_margin_bottom = 10.0
+bg_color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="MainMenu" instance=ExtResource("1_etwl2")]
 script = ExtResource("2_gkl5f")
@@ -21,6 +29,7 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"Headline"
+theme_override_font_sizes/font_size = 179
 text = "Godot Game Template"
 uppercase = true
 script = ExtResource("3_4fslp")
@@ -37,42 +46,71 @@ text = "BY"
 [node name="Author1" type="Button" parent="OuterMargin/Header/Author" index="1"]
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "njamster"
 script = ExtResource("2_strbq")
 
 [node name="Buttons" type="VBoxContainer" parent="OuterMargin" index="1"]
-custom_minimum_size = Vector2(320, 0)
+custom_minimum_size = Vector2(480, 0)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 8
-theme_override_constants/separation = 24
+theme_override_constants/separation = 32
 alignment = 1
 
 [node name="Play" type="Button" parent="OuterMargin/Buttons" index="0"]
+custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "PLAY"
 icon = ExtResource("5_0wxab")
+alignment = 0
 script = ExtResource("2_strbq")
 
 [node name="Options" type="Button" parent="OuterMargin/Buttons" index="1"]
+custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "OPTIONS"
 icon = ExtResource("6_ed0wa")
+alignment = 0
 script = ExtResource("2_strbq")
 
 [node name="Credits" type="Button" parent="OuterMargin/Buttons" index="2"]
+custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "CREDITS"
 icon = ExtResource("7_j0mbf")
+alignment = 0
 script = ExtResource("2_strbq")
 
 [node name="Exit" type="Button" parent="OuterMargin/Buttons" index="3"]
+custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "EXIT"
 icon = ExtResource("8_bk1op")
+alignment = 0
 script = ExtResource("2_strbq")
+
+[node name="InputHints" type="PanelContainer" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -664.0
+offset_top = -132.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wp73t")
+script = ExtResource("9_d4na5")
+hints = Array[String](["ui_up", "ui_down", "CHOOSE", "", "ui_accept", "CONFIRM"])
 
 [connection signal="pressed" from="OuterMargin/Header/Author/Author1" to="." method="_on_author_1_pressed"]
 [connection signal="pressed" from="OuterMargin/Buttons/Play" to="." method="_on_play_pressed"]

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cs1b41km6kl3c" path="res://prefabs/better_tab_container/better_tab_container.tscn" id="3_5ehfa"]
 [ext_resource type="PackedScene" uid="uid://bpixbys68ivv4" path="res://menu_screens/options/video/video.tscn" id="4_sic2g"]
 [ext_resource type="PackedScene" uid="uid://df0cw02w56fm7" path="res://menu_screens/options/audio/audio.tscn" id="5_w3heh"]
-[ext_resource type="Texture2D" uid="uid://buclaey3o8vh3" path="res://autoloads/input_handler/images/prompts/escape_outline.svg" id="6_b11p0"]
+[ext_resource type="Texture2D" uid="uid://2rvdgrrbqwi3" path="res://input_icons/keyboard/escape.png" id="6_h3320"]
 [ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="7_uf41k"]
 
 [node name="Settings" instance=ExtResource("1_xr35s")]
@@ -31,8 +31,10 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "BACK"
-icon = ExtResource("6_b11p0")
+icon = ExtResource("6_h3320")
 script = ExtResource("7_uf41k")
+action_name = "ui_cancel"
 
 [connection signal="pressed" from="OuterMargin/Back" to="." method="_on_back_pressed"]

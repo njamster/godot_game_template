@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://hil4k4mmkyhq"]
+[gd_scene load_steps=7 format=3 uid="uid://hil4k4mmkyhq"]
 
 [ext_resource type="PackedScene" uid="uid://4kw0amsb8vy4" path="res://menu_screens/menu_screen_base.tscn" id="1_to3i7"]
 [ext_resource type="Script" path="res://menu_screens/language_selection/language_selection.gd" id="2_66pud"]
+[ext_resource type="Texture2D" uid="uid://df0rdq1avkhyt" path="res://input_icons/keyboard/enter.png" id="3_d0xuf"]
 [ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="3_y74wq"]
+[ext_resource type="Script" path="res://prefabs/input_hints/input_hints.gd" id="5_d65bt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i84yi"]
+content_margin_left = 25.0
+content_margin_top = 10.0
+content_margin_right = 25.0
+content_margin_bottom = 10.0
+bg_color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="LanguageSelection" instance=ExtResource("1_to3i7")]
 script = ExtResource("2_66pud")
@@ -32,7 +41,26 @@ columns = 5
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "CONFIRM"
+icon = ExtResource("3_d0xuf")
 script = ExtResource("3_y74wq")
+action_name = "ui_accept"
+
+[node name="InputHints" type="PanelContainer" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -128.0
+offset_bottom = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i84yi")
+script = ExtResource("5_d65bt")
+hints = Array[String](["ui_left", "ui_right", "CHOOSE"])
 
 [connection signal="pressed" from="OuterMargin/VBox/Confirm" to="." method="_on_confirm_pressed"]

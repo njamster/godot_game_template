@@ -23,8 +23,6 @@ func _ready() -> void:
 	_load_godot_credits()
 	CREDITS.add_child(spacer2)
 
-	$OuterMargin/Back.grab_focus_silently()
-
 
 func _add_category() -> VBoxContainer:
 	var current_category = VBoxContainer.new()
@@ -137,6 +135,11 @@ func _on_scrollable_gui_input(event: InputEvent) -> void:
 			)
 
 			get_viewport().set_input_as_handled()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		$OuterMargin/Back.emit_signal("pressed")
 
 
 func _on_back_pressed() -> void:

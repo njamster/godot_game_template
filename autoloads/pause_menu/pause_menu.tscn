@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3drprfqg8lkf"]
+[gd_scene load_steps=5 format=3 uid="uid://c3drprfqg8lkf"]
 
 [ext_resource type="Script" path="res://autoloads/pause_menu/pause_menu.gd" id="1_u6j1h"]
 [ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="2_u6d6y"]
+[ext_resource type="Script" path="res://prefabs/input_hints/input_hints.gd" id="3_oo2oh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vb208"]
+content_margin_left = 25.0
+content_margin_top = 10.0
+content_margin_right = 25.0
+content_margin_bottom = 10.0
+bg_color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="PauseMenu" type="CanvasLayer"]
 script = ExtResource("1_u6j1h")
@@ -42,23 +50,42 @@ theme_override_constants/separation = 24
 
 [node name="Continue" type="Button" parent="VBox/Buttons"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "CONTINUE"
 script = ExtResource("2_u6d6y")
 
 [node name="Restart" type="Button" parent="VBox/Buttons"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "RESTART"
 script = ExtResource("2_u6d6y")
 
 [node name="Options" type="Button" parent="VBox/Buttons"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "OPTIONS"
 script = ExtResource("2_u6d6y")
 
 [node name="MainMenu" type="Button" parent="VBox/Buttons"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "MAIN_MENU"
 script = ExtResource("2_u6d6y")
+
+[node name="InputHints" type="PanelContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -664.0
+offset_top = -132.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vb208")
+script = ExtResource("3_oo2oh")
+hints = Array[String](["ui_up", "ui_down", "CHOOSE", "", "ui_accept", "CONFIRM"])
 
 [connection signal="pressed" from="VBox/Buttons/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBox/Buttons/Restart" to="." method="_on_restart_pressed"]

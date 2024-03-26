@@ -10,8 +10,8 @@ func _on_back_pressed() -> void:
 	SceneSwitcher.go_back(self)
 
 
-func _unhandled_key_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
 		if $OuterMargin/Categories.visible_tab != -1:
 			$OuterMargin/Categories.focus_tab()
 		else:

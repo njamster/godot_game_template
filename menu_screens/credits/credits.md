@@ -6,7 +6,7 @@ njamster
 # Music & Sound Design
 vacuumbeef
 
-# Mouse Cursors & Menu Icons
+# Mouse Cursors, Input & Menu Icons
 Kenney Vleugels (www.kenney.nl)
 
 # Country Flags
