@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0061sjb8lcha"]
+
+[ext_resource type="PackedScene" uid="uid://cfok1now7w0c6" path="res://menu_screens/options/category.tscn" id="1_ypnd8"]
+[ext_resource type="Script" path="res://menu_screens/options/input/input.gd" id="2_001a5"]
+
+[node name="Input" instance=ExtResource("1_ypnd8")]
+script = ExtResource("2_001a5")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="3_y74wq"]
 [ext_resource type="Script" path="res://prefabs/input_hints/input_hints.gd" id="5_d65bt"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i84yi"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgwe5"]
 content_margin_left = 25.0
 content_margin_top = 10.0
 content_margin_right = 25.0
@@ -59,7 +59,7 @@ offset_top = -128.0
 offset_bottom = -64.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_i84yi")
+theme_override_styles/panel = SubResource("StyleBoxFlat_mgwe5")
 script = ExtResource("5_d65bt")
 hints = Array[String](["ui_left", "ui_right", "CHOOSE"])
 

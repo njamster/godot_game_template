@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://hcpvfflvrlhn"]
+[gd_scene load_steps=11 format=3 uid="uid://hcpvfflvrlhn"]
 
 [ext_resource type="PackedScene" uid="uid://4kw0amsb8vy4" path="res://menu_screens/menu_screen_base.tscn" id="1_xr35s"]
 [ext_resource type="Script" path="res://menu_screens/options/options.gd" id="2_151yv"]
@@ -6,12 +6,26 @@
 [ext_resource type="PackedScene" uid="uid://bpixbys68ivv4" path="res://menu_screens/options/video/video.tscn" id="4_sic2g"]
 [ext_resource type="PackedScene" uid="uid://df0cw02w56fm7" path="res://menu_screens/options/audio/audio.tscn" id="5_w3heh"]
 [ext_resource type="Texture2D" uid="uid://2rvdgrrbqwi3" path="res://input_icons/keyboard/escape.png" id="6_h3320"]
+[ext_resource type="PackedScene" uid="uid://d0061sjb8lcha" path="res://menu_screens/options/input/input.tscn" id="6_v4w0m"]
 [ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="7_uf41k"]
+[ext_resource type="Script" path="res://prefabs/input_hints/input_hints.gd" id="9_2sf8g"]
 
-[node name="Settings" instance=ExtResource("1_xr35s")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gg0np"]
+content_margin_left = 25.0
+content_margin_top = 10.0
+content_margin_right = 25.0
+content_margin_bottom = 10.0
+bg_color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="Options" instance=ExtResource("1_xr35s")]
 script = ExtResource("2_151yv")
 
-[node name="Categories" parent="OuterMargin" index="0" instance=ExtResource("3_5ehfa")]
+[node name="VBox" type="VBoxContainer" parent="OuterMargin" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Categories" parent="OuterMargin/VBox" index="0" instance=ExtResource("3_5ehfa")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 tab_bar_position = 3
@@ -19,14 +33,19 @@ tab_bar_minimum_size = 240
 tab_bar_opening_pad = 25
 tab_separation = 40
 
-[node name="Video" parent="OuterMargin/Categories" index="1" instance=ExtResource("4_sic2g")]
-layout_mode = 2
-
-[node name="Audio" parent="OuterMargin/Categories" index="2" instance=ExtResource("5_w3heh")]
+[node name="Video" parent="OuterMargin/VBox/Categories" index="1" instance=ExtResource("4_sic2g")]
 visible = false
 layout_mode = 2
 
-[node name="Back" type="Button" parent="OuterMargin" index="1"]
+[node name="Audio" parent="OuterMargin/VBox/Categories" index="2" instance=ExtResource("5_w3heh")]
+visible = false
+layout_mode = 2
+
+[node name="Input" parent="OuterMargin/VBox/Categories" index="3" instance=ExtResource("6_v4w0m")]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="OuterMargin/VBox" index="1"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -37,4 +56,20 @@ icon = ExtResource("6_h3320")
 script = ExtResource("7_uf41k")
 action_name = "ui_cancel"
 
-[connection signal="pressed" from="OuterMargin/Back" to="." method="_on_back_pressed"]
+[node name="InputHints" type="PanelContainer" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -664.0
+offset_top = -132.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gg0np")
+script = ExtResource("9_2sf8g")
+hints = Array[String](["ui_up", "ui_down", "CHOOSE", "", "ui_accept", "CONFIRM"])
+
+[connection signal="pressed" from="OuterMargin/VBox/Back" to="." method="_on_back_pressed"]

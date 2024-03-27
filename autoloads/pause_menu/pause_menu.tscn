@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="2_u6d6y"]
 [ext_resource type="Script" path="res://prefabs/input_hints/input_hints.gd" id="3_oo2oh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vb208"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_186uu"]
 content_margin_left = 25.0
 content_margin_top = 10.0
 content_margin_right = 25.0
@@ -53,24 +53,28 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "CONTINUE"
 script = ExtResource("2_u6d6y")
+mode = 0
 
 [node name="Restart" type="Button" parent="VBox/Buttons"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "RESTART"
 script = ExtResource("2_u6d6y")
+mode = 0
 
 [node name="Options" type="Button" parent="VBox/Buttons"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "OPTIONS"
 script = ExtResource("2_u6d6y")
+mode = 0
 
 [node name="MainMenu" type="Button" parent="VBox/Buttons"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "MAIN_MENU"
 script = ExtResource("2_u6d6y")
+mode = 0
 
 [node name="InputHints" type="PanelContainer" parent="."]
 anchors_preset = 3
@@ -83,7 +87,7 @@ offset_top = -132.0
 offset_bottom = -48.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vb208")
+theme_override_styles/panel = SubResource("StyleBoxFlat_186uu")
 script = ExtResource("3_oo2oh")
 hints = Array[String](["ui_up", "ui_down", "CHOOSE", "", "ui_accept", "CONFIRM"])
 

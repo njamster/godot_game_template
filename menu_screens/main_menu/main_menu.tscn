@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://okguek63qg6s" path="res://menu_screens/main_menu/images/quit.png" id="8_bk1op"]
 [ext_resource type="Script" path="res://prefabs/input_hints/input_hints.gd" id="9_d4na5"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp73t"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qbhi"]
 content_margin_left = 25.0
 content_margin_top = 10.0
 content_margin_right = 25.0
@@ -51,6 +51,7 @@ theme_type_variation = &"FlatButton"
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "njamster"
 script = ExtResource("2_strbq")
+mode = 0
 
 [node name="Buttons" type="VBoxContainer" parent="OuterMargin" index="1"]
 custom_minimum_size = Vector2(480, 0)
@@ -68,6 +69,7 @@ text = "PLAY"
 icon = ExtResource("5_0wxab")
 alignment = 0
 script = ExtResource("2_strbq")
+mode = 0
 
 [node name="Options" type="Button" parent="OuterMargin/Buttons" index="1"]
 custom_minimum_size = Vector2(0, 110)
@@ -77,6 +79,7 @@ text = "OPTIONS"
 icon = ExtResource("6_ed0wa")
 alignment = 0
 script = ExtResource("2_strbq")
+mode = 0
 
 [node name="Credits" type="Button" parent="OuterMargin/Buttons" index="2"]
 custom_minimum_size = Vector2(0, 110)
@@ -86,6 +89,7 @@ text = "CREDITS"
 icon = ExtResource("7_j0mbf")
 alignment = 0
 script = ExtResource("2_strbq")
+mode = 0
 
 [node name="Exit" type="Button" parent="OuterMargin/Buttons" index="3"]
 custom_minimum_size = Vector2(0, 110)
@@ -95,6 +99,7 @@ text = "EXIT"
 icon = ExtResource("8_bk1op")
 alignment = 0
 script = ExtResource("2_strbq")
+mode = 0
 
 [node name="InputHints" type="PanelContainer" parent="." index="1"]
 layout_mode = 1
@@ -108,7 +113,7 @@ offset_top = -132.0
 offset_bottom = -48.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_wp73t")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qbhi")
 script = ExtResource("9_d4na5")
 hints = Array[String](["ui_up", "ui_down", "CHOOSE", "", "ui_accept", "CONFIRM"])
 

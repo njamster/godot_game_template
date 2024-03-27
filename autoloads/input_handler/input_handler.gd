@@ -19,7 +19,7 @@ var mode := Modes.KEYBOARD:
 				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 			emit_signal("mode_changed")
 
-var controller_type
+var controller_type := "xbox"
 
 
 var cursor_images := {
@@ -113,25 +113,51 @@ func _get_controller_type(device_id : int) -> void:
 	match joy_name:
 		"Xbox 360 Controller":
 			controller_type = "xbox"
+		"PS5 Controller":
+			controller_type = "play_station"
 
 
-func get_icon(input_action: String, outline_only := false) -> Texture2D:
+func get_icon(input_action: String, outline_only := false, input_mode := -1) -> Texture2D:
 	if InputMap.has_action(input_action):
-		if mode == Modes.KEYBOARD:
+		if input_mode == Modes.KEYBOARD or input_mode == -1 and mode == Modes.KEYBOARD:
 			for event in InputMap.action_get_events(input_action):
 				if event is InputEventKey:
 					var key_name := OS.get_keycode_string(event.keycode).replace(" ", "_").to_lower()
+
+					var path : String
 					if outline_only:
-						return load("res://input_icons/keyboard/outline_only/" + key_name + ".png")
+						path = "res://input_icons/keyboard/outline_only/" + key_name + ".png"
 					else:
-						return load("res://input_icons/keyboard/" + key_name + ".png")
-		elif mode == Modes.CONTROLLER:
+						path = "res://input_icons/keyboard/" + key_name + ".png"
+
+					if FileAccess.file_exists(path):
+						return load(path)
+					else:
+						return load("res://input_icons/unknown.png")
+		elif input_mode == Modes.CONTROLLER or input_mode == -1 and mode == Modes.CONTROLLER:
 			for event in InputMap.action_get_events(input_action):
+				var key_name : String
 				if event is InputEventJoypadButton:
-					var key_name := str(event.button_index)
-					if outline_only:
-						return load("res://input_icons/" + InputHandler.controller_type + "/outline_only/" + key_name + ".png")
-					else:
-						return load("res://input_icons/" + InputHandler.controller_type + "/" + key_name + ".png")
+					key_name = str(event.button_index)
+				elif event is InputEventJoypadMotion:
+					key_name = "axis_" + str(event.axis)
+					if event.axis in [0, 1, 2, 3]:
+						if event.axis_value > 0:
+							key_name += "_pos"
+						else:
+							key_name += "_neg"
+				else:
+					continue
+
+				var path : String
+				if outline_only:
+					path = "res://input_icons/" + InputHandler.controller_type + "/outline_only/" + key_name + ".png"
+				else:
+					path = "res://input_icons/" + InputHandler.controller_type + "/" + key_name + ".png"
+
+				if FileAccess.file_exists(path):
+					return load(path)
+				else:
+					return load("res://input_icons/unknown.png")
 
 	return null

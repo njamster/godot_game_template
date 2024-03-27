@@ -2,6 +2,11 @@
 class_name ResponsiveButton
 extends Button
 
+enum Mode {
+	DYNAMIC = -1,
+	KEYBOARD = InputHandler.Modes.KEYBOARD,
+	CONTROLLER = InputHandler.Modes.CONTROLLER
+}
 
 @export_group("Sounds")
 @export var focus_sound : AudioStream
@@ -14,6 +19,11 @@ var focus_sound_disabled := false
 @export var action_name : String:
 	set(value):
 		action_name = value
+		_update_input_icon()
+
+@export var mode := Mode.DYNAMIC:
+	set(value):
+		mode = value
 		_update_input_icon()
 
 @export var outline_only := false:
@@ -37,7 +47,7 @@ func _update_input_icon() -> void:
 	if self.action_name == "":
 		return
 
-	icon = InputHandler.get_icon(self.action_name, self.outline_only)
+	icon = InputHandler.get_icon(self.action_name, self.outline_only, self.mode)
 
 
 func grab_focus_silently() -> void:

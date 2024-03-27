@@ -16,3 +16,10 @@ MAIN_MENU,Main Menu,Hauptmenü,Menú Principal
 BACK,Back,Zurück,Volver
 URL_OPENED,URL opened!,URL geöffnet!,¡URL abierta!
 CHOOSE,Choose,Auswählen,Elegir
+UI_ACCEPT,Confirm,Bestätigen,Confirmar
+UI_CANCEL,Back,Zurück,Volver
+UI_LEFT,Left,Links,Izquierda
+UI_RIGHT,Right,Rechts,Derecha
+UI_UP,Up,Oben,Arriba
+UI_DOWN,Down,Unten,Abajo
+PAUSE_GAME,Pause,Pausieren,Pausar

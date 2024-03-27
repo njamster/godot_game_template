@@ -20,6 +20,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3i42g")
 
 [node name="Scrollable" type="ScrollContainer" parent="."]
 layout_mode = 2
+follow_focus = true
 
 [node name="Options" type="VBoxContainer" parent="Scrollable"]
 layout_mode = 2
