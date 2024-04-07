@@ -4,6 +4,8 @@ extends Node
 
 signal mode_changed()
 
+const DEADZONE := 0.5
+
 enum Modes {
 	KEYBOARD,
 	CONTROLLER
@@ -74,7 +76,7 @@ func _input(event: InputEvent) -> void:
 
 	if event is InputEventKey or event is InputEventMouse:
 		mode = Modes.KEYBOARD
-	elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
+	elif event is InputEventJoypadButton or event is InputEventJoypadMotion and abs(event.axis_value) > DEADZONE:
 		_get_controller_type(event.device)
 		mode = Modes.CONTROLLER
 
