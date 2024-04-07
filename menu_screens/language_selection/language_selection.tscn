@@ -1,12 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://hil4k4mmkyhq"]
+[gd_scene load_steps=8 format=3 uid="uid://hil4k4mmkyhq"]
 
 [ext_resource type="PackedScene" uid="uid://4kw0amsb8vy4" path="res://menu_screens/menu_screen_base.tscn" id="1_to3i7"]
 [ext_resource type="Script" path="res://menu_screens/language_selection/language_selection.gd" id="2_66pud"]
 [ext_resource type="Texture2D" uid="uid://df0rdq1avkhyt" path="res://input_icons/keyboard/enter.png" id="3_d0xuf"]
 [ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="3_y74wq"]
 [ext_resource type="Script" path="res://prefabs/input_hints/input_hints.gd" id="5_d65bt"]
+[ext_resource type="Script" path="res://prefabs/focus_highlight/focus_highlight.gd" id="6_257jg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgwe5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aspl1"]
 content_margin_left = 25.0
 content_margin_top = 10.0
 content_margin_right = 25.0
@@ -47,7 +48,14 @@ icon = ExtResource("3_d0xuf")
 script = ExtResource("3_y74wq")
 action_name = "ui_accept"
 
-[node name="InputHints" type="PanelContainer" parent="." index="1"]
+[node name="FocusHighlight" type="NinePatchRect" parent="." index="1"]
+modulate = Color(0.6, 0.6, 0.6, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_257jg")
+
+[node name="InputHints" type="PanelContainer" parent="." index="2"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -59,7 +67,7 @@ offset_top = -128.0
 offset_bottom = -64.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_mgwe5")
+theme_override_styles/panel = SubResource("StyleBoxFlat_aspl1")
 script = ExtResource("5_d65bt")
 hints = Array[String](["ui_left", "ui_right", "CHOOSE"])
 

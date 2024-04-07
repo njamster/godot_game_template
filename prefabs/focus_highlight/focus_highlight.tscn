@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1siorowj0jr8"]
+
+[ext_resource type="Texture2D" uid="uid://dfxvxfgrj708p" path="res://prefabs/focus_highlight/images/highlight.png" id="1_lrueq"]
+[ext_resource type="Script" path="res://prefabs/focus_highlight/focus_highlight.gd" id="2_28hvk"]
+
+[node name="FocusHighlight" type="NinePatchRect"]
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("1_lrueq")
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
+script = ExtResource("2_28hvk")
