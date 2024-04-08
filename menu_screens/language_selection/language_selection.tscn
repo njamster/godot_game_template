@@ -1,13 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://hil4k4mmkyhq"]
+[gd_scene load_steps=9 format=3 uid="uid://hil4k4mmkyhq"]
 
 [ext_resource type="PackedScene" uid="uid://4kw0amsb8vy4" path="res://menu_screens/menu_screen_base.tscn" id="1_to3i7"]
 [ext_resource type="Script" path="res://menu_screens/language_selection/language_selection.gd" id="2_66pud"]
 [ext_resource type="Texture2D" uid="uid://df0rdq1avkhyt" path="res://input_icons/keyboard/enter.png" id="3_d0xuf"]
 [ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="3_y74wq"]
+[ext_resource type="Texture2D" uid="uid://dfxvxfgrj708p" path="res://prefabs/focus_highlight/images/highlight.png" id="5_30612"]
 [ext_resource type="Script" path="res://prefabs/input_hints/input_hints.gd" id="5_d65bt"]
 [ext_resource type="Script" path="res://prefabs/focus_highlight/focus_highlight.gd" id="6_257jg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aspl1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huecj"]
 content_margin_left = 25.0
 content_margin_top = 10.0
 content_margin_right = 25.0
@@ -19,28 +20,28 @@ script = ExtResource("2_66pud")
 
 [node name="VBox" type="VBoxContainer" parent="OuterMargin" index="0"]
 layout_mode = 2
-theme_override_constants/separation = 96
 alignment = 1
 
 [node name="Heading" type="Label" parent="OuterMargin/VBox" index="0"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_type_variation = &"Headline"
-text = "LANGUAGE"
+text = "GAME_LANGUAGE"
 horizontal_alignment = 1
 
 [node name="Languages" type="GridContainer" parent="OuterMargin/VBox" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/h_separation = 64
-theme_override_constants/v_separation = 48
+size_flags_vertical = 6
+theme_override_constants/h_separation = 32
 columns = 5
 
 [node name="Confirm" type="Button" parent="OuterMargin/VBox" index="2"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 8
 focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "CONFIRM"
@@ -51,8 +52,13 @@ action_name = "ui_accept"
 [node name="FocusHighlight" type="NinePatchRect" parent="." index="1"]
 modulate = Color(0.6, 0.6, 0.6, 1)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 62.0
+offset_bottom = 62.0
+texture = ExtResource("5_30612")
+patch_margin_left = 31
+patch_margin_top = 31
+patch_margin_right = 31
+patch_margin_bottom = 31
 script = ExtResource("6_257jg")
 
 [node name="InputHints" type="PanelContainer" parent="." index="2"]
@@ -62,12 +68,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -154.0
-offset_top = -128.0
-offset_bottom = -64.0
+offset_left = -193.0
+offset_top = -132.0
+offset_bottom = -48.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_aspl1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_huecj")
 script = ExtResource("5_d65bt")
 hints = Array[String](["ui_left", "ui_right", "CHOOSE"])
 

@@ -20,7 +20,6 @@ func _ready() -> void:
 	var i := loaded_locales.find(current_locale)
 	%Languages.get_child(i).grab_focus()
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept", false, true):
 		$OuterMargin/VBox/Confirm.emit_signal("pressed")
