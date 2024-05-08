@@ -1,27 +1,43 @@
 extends Node
 
-const SAVE_PATH := "user://settings.conf"
+signal settings_changed()
 
 
-@export_group("VIDEO")
+const SAVE_PATH := "user://settings.cfg"
+
+
+@export_group("Video")
 #region: video settings
-# TODO
+@export var fullscreen := true:
+	set(value):
+		fullscreen = value
+		if fullscreen:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		settings_changed.emit()
+
+# TODO: remaining settings
 #endregion
 
-@export_group("AUDIO")
+@export_group("Audio")
 #region: audio settings
-@export_range(0, 100) var master_volume := 100:
+@export_range(0, 100, 10) var master_volume := 100:
 	set(value):
-		music_volume = _set_bus_volume("Master", value)
-@export_range(0, 100) var music_volume := 100:
+		master_volume = _set_bus_volume("Master", value)
+		settings_changed.emit()
+@export_range(0, 100, 10) var music_volume := 100:
 	set(value):
 		music_volume = _set_bus_volume("Music", value)
-@export_range(0, 100) var sound_volume := 100:
+		settings_changed.emit()
+@export_range(0, 100, 10) var sound_volume := 100:
 	set(value):
 		sound_volume = _set_bus_volume("SFX", value)
-@export_range(0, 100) var interface_volume := 100:
+		settings_changed.emit()
+@export_range(0, 100, 10) var interface_volume := 100:
 	set(value):
-		sound_volume = _set_bus_volume("UI", value)
+		interface_volume = _set_bus_volume("UI", value)
+		settings_changed.emit()
 
 func _set_bus_volume(bus_name: String, volume : int) -> int:
 	volume = clamp(volume, 0, 100)
@@ -36,7 +52,7 @@ func _set_bus_volume(bus_name: String, volume : int) -> int:
 	return volume
 #endregion
 
-@export_group("INPUT")
+@export_group("Input")
 #region: input settings
 # TODO
 #endregion
@@ -53,7 +69,7 @@ func load_from_file() -> void:
 	if file.load(SAVE_PATH) != OK:
 		return
 
-	var group_names = []
+	var group_names := []
 	for property in get_script().get_script_property_list():
 		if property.usage == PROPERTY_USAGE_GROUP:
 			group_names.append(property.name)
@@ -82,9 +98,7 @@ func save_to_file() -> void:
 	for property in get_script().get_script_property_list():
 		if property.usage == PROPERTY_USAGE_GROUP:
 			group_name = property.name
-		elif property.usage & PROPERTY_USAGE_EDITOR == 0:
-			continue # no export variable
-		elif group_name:
+		elif group_name and property.usage & PROPERTY_USAGE_EDITOR:
 			file.set_value(group_name, property.name, self[property.name])
 
 	file.save(SAVE_PATH)

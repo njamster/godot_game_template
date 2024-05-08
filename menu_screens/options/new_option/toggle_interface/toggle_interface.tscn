@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv86qcgd6wfci"]
+
+[ext_resource type="Script" path="res://menu_screens/options/new_option/toggle_interface/toggle_interface.gd" id="1_rwexq"]
+
+[node name="ToggleInterface" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_rwexq")
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+flat = true
+
+[connection signal="pressed" from="CheckBox" to="." method="_on_check_box_pressed"]
