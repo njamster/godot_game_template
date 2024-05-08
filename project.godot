@@ -30,6 +30,7 @@ SceneSwitcher="*res://autoloads/scene_switcher.gd"
 SoundManager="*res://autoloads/sound_manager.gd"
 Utils="*res://autoloads/utils.gd"
 WorldEnv="*res://autoloads/world_environment.tscn"
+NewSettings="*res://autoloads/new_settings.gd"
 
 [display]
 
