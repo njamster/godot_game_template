@@ -11,6 +11,7 @@ script = ExtResource("1_rwexq")
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 1
+mouse_default_cursor_shape = 2
 flat = true
 
 [connection signal="pressed" from="CheckBox" to="." method="_on_check_box_pressed"]

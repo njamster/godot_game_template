@@ -19,6 +19,13 @@ func _ready() -> void:
 			current_category.get_node("Scrollable/Options").add_child(option)
 			option.set_label_text(property.name)
 
+			if property.hint == PROPERTY_HINT_ENUM:
+				var interface = preload("res://menu_screens/options/new_option/select_interface/select_interface.tscn").instantiate()
+				interface.option_name = property.name
+				interface.options = property.hint_string.split(",")
+				option.add_interface(interface)
+				continue
+
 			match typeof(NewSettings[property.name]):
 				TYPE_INT:
 					var interface = preload("res://menu_screens/options/new_option/range_interface/range_interface.tscn").instantiate()

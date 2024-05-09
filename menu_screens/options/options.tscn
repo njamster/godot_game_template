@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://prefabs/responsive_button/responsive_button.gd" id="7_uf41k"]
 [ext_resource type="Script" path="res://prefabs/input_hints/input_hints.gd" id="9_2sf8g"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3vsp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0thq"]
 content_margin_left = 25.0
 content_margin_top = 10.0
 content_margin_right = 25.0
@@ -54,7 +54,7 @@ offset_top = -132.0
 offset_bottom = -48.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_i3vsp")
+theme_override_styles/panel = SubResource("StyleBoxFlat_o0thq")
 script = ExtResource("9_2sf8g")
 hints = Array[String](["ui_up", "ui_down", "CHOOSE", "", "ui_accept", "CONFIRM"])
 
