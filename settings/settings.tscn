@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0oro6ve77lwc"]
+
+[ext_resource type="Script" path="res://settings/settings.gd" id="1_656fi"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_656fi")
+
+[node name="OuterMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Settings" type="VBoxContainer" parent="OuterMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 24
+
+[node name="Header" type="Label" parent="OuterMargin/Settings"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="ToDo" type="Label" parent="OuterMargin/Settings"]
+layout_mode = 2
+text = "TODO"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="OuterMargin"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Go Back"

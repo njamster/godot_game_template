@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4mjeg3gt5meb"]
+
+[ext_resource type="Script" path="res://autoloads/pause_menu/pause_menu.gd" id="1_m3k77"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_m3k77")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.5
+offset_top = -93.5
+offset_right = 92.5
+offset_bottom = 93.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="Header" type="Label" parent="VBox"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Game Paused"
+
+[node name="Buttons" type="VBoxContainer" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Resume" type="Button" parent="VBox/Buttons"]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+text = "Resume"
+
+[node name="QuitToMenu" type="Button" parent="VBox/Buttons"]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+text = "Quit To Menu"
