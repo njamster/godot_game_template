@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d4mjeg3gt5meb"]
 
-[ext_resource type="Script" path="res://autoloads/pause_menu/pause_menu.gd" id="1_m3k77"]
+[ext_resource type="Script" path="res://game/pause_menu/pause_menu.gd" id="1_m3k77"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 script = ExtResource("1_m3k77")
@@ -31,7 +31,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Resume" type="Button" parent="VBox/Buttons"]
+[node name="ResumeGame" type="Button" parent="VBox/Buttons"]
 custom_minimum_size = Vector2(180, 40)
 layout_mode = 2
 text = "Resume"

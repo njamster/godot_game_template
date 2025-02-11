@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://rmby4mq3clph"]
+[gd_scene load_steps=5 format=3 uid="uid://rmby4mq3clph"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_ulmtw"]
 [ext_resource type="Texture2D" uid="uid://b7qly7a5ne1yu" path="res://icon.svg" id="2_eepwc"]
+[ext_resource type="PackedScene" uid="uid://d4mjeg3gt5meb" path="res://game/pause_menu/pause_menu.tscn" id="3_oercm"]
 
 [sub_resource type="Curve2D" id="Curve2D_ugi1f"]
 _data = {
@@ -28,3 +29,5 @@ rotates = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
 texture = ExtResource("2_eepwc")
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_oercm")]

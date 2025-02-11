@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneSwitcher="*res://autoloads/scene_switcher.gd"
-PauseMenu="*res://autoloads/pause_menu/pause_menu.tscn"
 
 [display]
 
