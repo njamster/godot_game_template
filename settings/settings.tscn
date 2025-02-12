@@ -35,9 +35,15 @@ theme_type_variation = &"HeaderLarge"
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="ToDo" type="Label" parent="OuterMargin/Settings"]
+[node name="AudioGroup" type="VBoxContainer" parent="OuterMargin/Settings"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "TODO"
+theme_override_constants/separation = 12
+
+[node name="Header" type="Label" parent="OuterMargin/Settings/AudioGroup"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Audio"
 horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="OuterMargin"]

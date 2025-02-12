@@ -7,6 +7,13 @@ func _ready() -> void:
 
 
 func _set_initial_state() -> void:
+	for bus_id in AudioServer.bus_count:
+		var volume_setting = preload(
+			"res://settings/volume_setting/volume_setting.tscn"
+		).instantiate()
+		volume_setting.bus_id = bus_id
+		%AudioGroup.add_child(volume_setting)
+
 	%BackButton.grab_focus()
 
 
