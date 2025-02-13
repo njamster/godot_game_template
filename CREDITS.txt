@@ -1,0 +1,15 @@
+# This file is sourced for generating the in-game credits. Everything after "# "
+# is considered a comment and won't be included. The rest will get rendered to a
+# RichTextLabel, so you can use all supported BBCode tags here, too!
+
+[b]A GAME BY[/b]
+[url=https://njamster.itch.io/]njamster[/url]
+
+[b]MADE WITH[/b]
+
+[img]credits/images/godot_logo.svg[/img]
+[GODOT_VERSION]
+
+[b]BASED ON THE[/b]
+[url=https://github.com/njamster/godot_game_template]Godot Game Template[/url]
+by [url=https://github.com/njamster]njamster[/url]

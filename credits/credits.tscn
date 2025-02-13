@@ -24,20 +24,15 @@ theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
 [node name="Credits" type="VBoxContainer" parent="OuterMargin"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_constants/separation = 16
+size_flags_horizontal = 3
+theme_override_constants/separation = 48
 
 [node name="Header" type="Label" parent="OuterMargin/Credits"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Credits"
-
-[node name="MadeBy" type="Label" parent="OuterMargin/Credits"]
-layout_mode = 2
-text = "A game by
-njamster"
 horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="OuterMargin"]
